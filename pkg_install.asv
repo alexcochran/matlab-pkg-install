@@ -37,8 +37,6 @@ function pkg_install(pkgPath)
         fprintf("Installing " + pkgPath + "to the MATLAB search path.\n");
         fprintf("To remove the package, see " + startupPath + ".\n");
     else
-        error("The package already appears to be added to the search path upon " + ...
-              "startup. Check your startup.m file.");
-    end
+        error('
 end
 
