@@ -15,6 +15,12 @@ installation scripts for packages you intend to share with others. If you would 
 third-party/self-written code to be instantly available from the MATLAB command line, then
 this might be a helpful tool for you.
 
+This utility is very simple. If you would like a more fully-featured tool that allows for
+MATLAB package management similar to `pip` for Python or `npm` for Node.js, check out Omid
+Sani's [PackMan](https://github.com/OmidS/PackMan). PackMan takes dependency management and
+organization a few steps further than the code in this repository by implementing package
+installation from internet sources (e.g. GitHub) and integrated version control.
+
 ## Usage
 
 Begin by "installing" this package to enable its global use with other packages:
