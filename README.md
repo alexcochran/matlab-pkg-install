@@ -13,6 +13,9 @@ installation scripts for packages you intend to share with others. If you would 
 third-party/self-written code to be instantly available from the MATLAB command line, then
 this might be a helpful tool for you.
 
+You can also find this code on the [MATLAB File
+Exchange](https://www.mathworks.com/matlabcentral/fileexchange/73256-matlab-pkg-install).
+
 ## Usage
 
 Begin by "installing" this package to enable its global use with other packages:
