@@ -3,8 +3,6 @@
 A simple package for automating adding MATLAB packages/folders to the MATLAB search path on
 startup.
 
----
-
 Third-party code downloaded from the [MathWorks MATLAB File
 Exchange](https://www.mathworks.com/matlabcentral/fileexchange/) can be added to MATLAB's
 search path automatically by using an `addpath` command in your `startup.m` file in your
@@ -37,6 +35,8 @@ If you have a MATLAB package that you would like to create an install script for
 2. Use `create_install_script('PACKAGE_NAME')` to create a simple, portable installation
    script for your code. Said script will perform the same operations as this utility's
    `pkg_install` function, but might be useful for users who are not aware/do not use it.
+
+---
 
 ## Other Helpful Tools
 
