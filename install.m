@@ -1,2 +1,5 @@
+% Self-installation script for matlab-pkg-install.
+% ------------------------------------------------------------------------------------------
 
-matlabPkgInstallPath = which('matlab-pkg-install/install.m')
+pkgPath = fileparts(mfilename('fullpath'));
+pkg_install(pkgPath);
