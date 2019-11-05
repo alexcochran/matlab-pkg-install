@@ -18,27 +18,33 @@ function pkg_install(pkgPath)
     % pkg_install(PATH_TO_PACKAGE)
     % --------------------------------------------------------------------------------------
 
+    % deal with Windows filesep incompatibilities
+    process_path = @(oldPath) strrep(oldPath, '\', '/');
+    
     % build the installation expression and translate it to regexp for checking
-    installCommand = "\n" + "addpath(" + string(pkgPath) + ");";
+    installCommand = "\n" + "addpath(" + process_path(pkgPath) + ");";
     installCommandRegExp = regexptranslate('escape', installCommand);
-    startupPath = fullfile(userpath, "startup.m");
+    startupFilePath = process_path(fullfile(userpath, "startup.m"));
+
+    % open the startup file or create if one doesn't exist
+    fileID = fopen(startupFilePath, 'a');
     
     % determine if the startup.m file already contains an `addpath` for the package
-    startupFileText = fileread(startupPath);
+    startupFileText = fileread(startupFilePath);
     matches = regexp(startupFileText, installCommandRegExp, 'match');
     
     % add the new search path to startup.m if no command exists for the package or throw an
     % exception if the command already exists
     if isempty(matches)
-        fileID = fopen(startupPath, 'a+');
         fprintf(fileID, installCommand);
-        fclose(fileID);
-
-        fprintf("Installing " + pkgPath + "to the MATLAB search path.\n");
-        fprintf("To remove the package, see " + startupPath + ".\n");
+        fprintf("Installing " + process_path(pkgPath) + " to MATLAB's search path.\n");
+        fprintf("To remove the package, see " + startupFilePath + ".\n");
     else
+        fclose(fileID);
         error("The package already appears to be added to the search path upon " + ...
-              "startup. Check your startup.m file.");
+              "startup. Check your startup.m file.");    
     end
+
+    fclose(fileID);
 end
 
