@@ -22,7 +22,7 @@ function pkg_install(pkgPath)
     process_path = @(oldPath) strrep(oldPath, '\', '/');
     
     % build the installation expression and translate it to regexp for checking
-    installCommand = "\n" + "addpath(" + process_path(pkgPath) + ");";
+    installCommand = "\n" + "addpath('" + process_path(pkgPath) + "');";
     installCommandRegExp = regexptranslate('escape', installCommand);
     startupFilePath = process_path(fullfile(userpath, "startup.m"));
 
